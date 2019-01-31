@@ -32,8 +32,7 @@
   </section>
 
   <section class="section">
-
-    <article class="media" v-for="item in items.slice().reverse()">
+    <article class="media" v-for="item in tweets.slice().reverse()">
       <figure class="media-left">
         <p class="image is-64x64">
           <img src="https://bulma.io/images/placeholders/128x128.png">
@@ -42,7 +41,7 @@
       <div class="media-content">
         <div class="content">
           <p>
-            <strong>@{{item.name}}</strong> <small>@johnsmith</small> <small>31m</small>
+            <strong>@{{item.username}}</strong> <small>@johnsmith</small> <small>31m</small>
             <br>
             @{{item.message}}
           </p>
