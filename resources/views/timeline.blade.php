@@ -39,7 +39,7 @@
     <article class="media" v-for="item in tweets.slice().reverse()">
       <figure class="media-left">
         <p class="image is-64x64">
-          <img src="https://bulma.io/images/placeholders/128x128.png">
+          <img :src="item.img">
         </p>
       </figure>
       <div class="media-content">

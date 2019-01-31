@@ -23,8 +23,7 @@ class ApiController extends Controller
     $tweets = DB::table('tweets')
             ->join('users', 'tweets.username', '=', 'users.username')
             ->get();
-            
+  
     return $tweets;
-    // return $tweet->get();
   }
 }
