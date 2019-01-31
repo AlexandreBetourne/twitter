@@ -13,8 +13,11 @@ const app = new Vue({
 		console.log('hey');
 	},
 	methods: {
-		greet: function() {
-
+		submitTweet() {
+			this.items.push({
+				message: this.$refs.message.value,
+				name: this.$refs.user.value
+			})
 		}
 	}
 });

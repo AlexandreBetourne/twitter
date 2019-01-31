@@ -5,6 +5,8 @@
   <section class="section">
     <form class="" action="{{ route('tweet.post') }}" method="post">
       {{ csrf_field() }}
+
+      <input type="hidden" ref="user" value="{{ Auth::user()->username }}">
       <article class="media">
         <figure class="media-left">
           <p class="image is-64x64">
@@ -14,13 +16,13 @@
         <div class="media-content">
           <div class="field">
             <p class="control">
-              <textarea class="textarea" placeholder="Quoi de neuf ?"></textarea>
+              <textarea class="textarea" ref= "message" placeholder="Quoi de neuf ?"></textarea>
             </p>
           </div>
           <nav class="level">
             <div class="level-left">
               <div class="level-item">
-                <button type="submit" class="button is-info" name="button">Submit</button>
+                <button type="submit" class="button is-info" name="button" @click.prevent="submitTweet()">Submit</button>
               </div>
             </div>
           </nav>
@@ -30,7 +32,8 @@
   </section>
 
   <section class="section">
-    <article class="media" v-for="item in items">
+
+    <article class="media" v-for="item in items.slice().reverse()">
       <figure class="media-left">
         <p class="image is-64x64">
           <img src="https://bulma.io/images/placeholders/128x128.png">
@@ -62,6 +65,7 @@
         <button class="delete"></button>
       </div>
     </article>
+
   </section>
 
 

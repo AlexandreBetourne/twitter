@@ -28,6 +28,6 @@ class TimelineController extends Controller
 
     public function post()
     {
-      return redirect('/');
+      
     }
 }
