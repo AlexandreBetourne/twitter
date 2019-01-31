@@ -18,7 +18,7 @@ const app = new Vue({
 				img: "https://www.kodefork.com/static/users/images/user.png",
 				message: this.$refs.message.value,
 				username: this.$refs.username.value,
-				fullname: "Alexandre Bétourné"
+				fullname: this.$refs.fullname.value
 			})
 
 			this.$refs.message.value = "";

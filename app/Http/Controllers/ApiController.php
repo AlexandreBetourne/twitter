@@ -23,7 +23,17 @@ class ApiController extends Controller
     $tweets = DB::table('tweets')
             ->join('users', 'tweets.username', '=', 'users.username')
             ->get();
-  
+
     return $tweets;
+  }
+
+  public function post(Tweet $tweet, Request $request)
+  {
+    $tweet->forceCreate([
+      'username' => $request->input('username'),
+      'message' => 'ss'
+    ]);
+
+    return redirect("/");
   }
 }

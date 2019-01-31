@@ -6,8 +6,8 @@
     <form class="" action="{{ route('tweet.post') }}" method="post">
       {{ csrf_field() }}
 
-      <input type="hidden" ref="username" value="{{ Auth::user()->username }}">
-      <input type="hidden" name="" value="">
+      <input type="hidden" ref="username" name="username" value="{{ Auth::user()->username }}">
+      <input type="hidden" ref="fullname" name="fullname" value="{{ Auth::user()->fullname }}">
       <article class="media">
         <figure class="media-left">
           <p class="image is-64x64">
@@ -17,13 +17,13 @@
         <div class="media-content">
           <div class="field">
             <p class="control">
-              <textarea class="textarea" ref= "message" placeholder="Quoi de neuf ?"></textarea>
+              <textarea class="textarea" ref="message" name="tweet_message" placeholder="Quoi de neuf ?"></textarea>
             </p>
           </div>
           <nav class="level">
             <div class="level-left">
               <div class="level-item">
-                <button type="submit" class="button is-info" name="button" @click.prevent="submitTweet()">Submit</button>
+                <button type="submit" class="button is-info" name="button" @click="submitTweet()">Submit</button>
               </div>
             </div>
           </nav>
