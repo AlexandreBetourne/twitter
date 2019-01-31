@@ -19,6 +19,12 @@ class ApiController extends Controller
 
   public function index(Tweet $tweet)
   {
-    return $tweet->get();
+
+    $tweets = DB::table('tweets')
+            ->join('users', 'tweets.username', '=', 'users.username')
+            ->get();
+            
+    return $tweets;
+    // return $tweet->get();
   }
 }

@@ -31,7 +31,11 @@
     </form>
   </section>
 
-  <section class="section">
+
+  <div v-if="loading == true">
+    Loading..
+  </div>
+  <section v-else class="section">
     <article class="media" v-for="item in tweets.slice().reverse()">
       <figure class="media-left">
         <p class="image is-64x64">
@@ -41,7 +45,7 @@
       <div class="media-content">
         <div class="content">
           <p>
-            <strong>@{{item.username}}</strong> <small>@johnsmith</small> <small>31m</small>
+            <strong>@{{item.fullname}}</strong> <small>@@{{item.username}}</small> <small>31m</small>
             <br>
             @{{item.message}}
           </p>
@@ -60,14 +64,7 @@
           </div>
         </nav>
       </div>
-      <div class="media-right">
-        <button class="delete"></button>
-      </div>
     </article>
-
   </section>
-
-
-
 </div>
 @endsection
