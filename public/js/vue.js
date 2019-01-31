@@ -14,10 +14,14 @@ const app = new Vue({
 	},
 	methods: {
 		submitTweet() {
-			this.items.push({
+			this.tweets.push({
+				img: "https://www.kodefork.com/static/users/images/user.png",
 				message: this.$refs.message.value,
-				name: this.$refs.user.value
+				username: this.$refs.username.value,
+				fullname: "Alexandre Bétourné"
 			})
+
+			this.$refs.message.value = "";
 		}
 	}
 });

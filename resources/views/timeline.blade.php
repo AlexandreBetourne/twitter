@@ -6,7 +6,8 @@
     <form class="" action="{{ route('tweet.post') }}" method="post">
       {{ csrf_field() }}
 
-      <input type="hidden" ref="user" value="{{ Auth::user()->username }}">
+      <input type="hidden" ref="username" value="{{ Auth::user()->username }}">
+      <input type="hidden" name="" value="">
       <article class="media">
         <figure class="media-left">
           <p class="image is-64x64">
