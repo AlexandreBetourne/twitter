@@ -18,4 +18,6 @@ Route::group(['middleware' => ['web']] ,function(){
 Route::group(['middleware' => ['web', 'auth']] ,function(){
   Route::get('/', 'TimelineController@index')->name('home');
   Route::post('/', 'TimelineController@post')->name('tweet.post');
+
+  Route::get('/api/all', 'ApiController@index')->name('tweets.get');
 });
