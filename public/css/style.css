@@ -1,0 +1,33 @@
+body {
+    min-height: 100vh;
+    background: #e6ecf0;
+}
+
+.white-block {
+    background: white;
+    border-radius: 10px;
+}
+
+.media .image {
+    border-radius: 100px;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+}
+
+.home_profile .image {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 100px;
+}
+
+.image img {
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+.home_profile p {
+    margin-bottom: 0 !important;
+}
