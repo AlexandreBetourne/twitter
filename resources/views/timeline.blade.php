@@ -11,13 +11,13 @@
       <article class="media">
         <figure class="media-left">
           <p class="image is-64x64">
-            <img src="https://bulma.io/images/placeholders/128x128.png">
+            <img src="{{ Auth::user()->img }}">
           </p>
         </figure>
         <div class="media-content">
           <div class="field">
             <p class="control">
-              <textarea class="textarea" ref="message" name="tweet_message" placeholder="Quoi de neuf ?"></textarea>
+              <textarea class="textarea" ref="tweet_message" name="tweet_message" placeholder="Quoi de neuf ?" style="resize: none;"></textarea>
             </p>
           </div>
           <nav class="level">
@@ -36,7 +36,9 @@
   <div v-if="loading == true">
     Loading..
   </div>
+
   <section v-else class="section">
+    
     <article class="media" v-for="item in tweets.slice().reverse()">
       <figure class="media-left">
         <p class="image is-64x64">
@@ -46,7 +48,7 @@
       <div class="media-content">
         <div class="content">
           <p>
-            <strong>@{{item.fullname}}</strong> <small>@@{{item.username}}</small> <small>31m</small>
+            <strong>@{{item.fullname}}</strong> <small>@@{{item.username}}</small> <small>@{{item.created_at}}</small>
             <br>
             @{{item.message}}
           </p>
@@ -54,16 +56,16 @@
         <nav class="level is-mobile">
           <div class="level-left">
             <a class="level-item">
-              <span class="icon is-small"><i class="fas fa-reply"></i></span>
-            </a>
-            <a class="level-item">
-              <span class="icon is-small"><i class="fas fa-retweet"></i></span>
-            </a>
-            <a class="level-item">
               <span class="icon is-small"><i class="fas fa-heart"></i></span>
             </a>
           </div>
         </nav>
+      </div>
+      <div class="media-right">
+        <form class="" action="{{ route('tweet.delete') }}" method="delete">
+          <input type="hidden" name="tweet_id" :value="item.tweet_id">
+          <button type="submit" class="delete"></button>
+        </form>
       </div>
     </article>
   </section>

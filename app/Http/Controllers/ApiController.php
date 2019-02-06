@@ -20,20 +20,27 @@ class ApiController extends Controller
   public function index(Tweet $tweet)
   {
 
-    $tweets = DB::table('tweets')
-            ->join('users', 'tweets.username', '=', 'users.username')
-            ->get();
+    $tweets = $tweet
+              ->join('users', 'tweets.username', '=', 'users.username')
+              ->get();
 
     return $tweets;
   }
 
   public function post(Tweet $tweet, Request $request)
   {
+
     $tweet->forceCreate([
-      'username' => $request->input('username'),
-      'message' => 'ss'
+      'username' => $request->username,
+      'message' => $request->tweet_message
     ]);
 
+    return redirect("/");
+  }
+
+  public function delete(Tweet $tweet, Request $request)
+  {
+    $tweet->where('tweet_id', '=', $request->tweet_id)->delete();
     return redirect("/");
   }
 }

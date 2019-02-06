@@ -20,4 +20,5 @@ Route::group(['middleware' => ['web', 'auth']] ,function(){
 
   Route::get('/api/all', 'ApiController@index')->name('tweets.get');
   Route::post('/api/all', 'ApiController@post')->name('tweet.post');
+  Route::get('/api', 'ApiController@delete')->name('tweet.delete');;
 });
