@@ -29,15 +29,23 @@ class ProfileController extends Controller
 
   public function post(User $user, Request $request)
   {
+    if ($request->file('img_update_file')) {
+      $path = $request->file('img_update_file')->store('avatars');
+      $user
+      ->where('username', '=', $request->username_update)
+      ->update([
+        'img' => 'storage/'.$path
+      ]);
+    }
 
-    $path = $request->file('img_update_file')->store('avatars');
+
+
 
     $user
     ->where('username', '=', $request->username_update)
     ->update([
       'fullname' => $request->fullname_update,
-      'email' => $request->email_update,
-      'img' => 'storage/'.$path
+      'email' => $request->email_update
     ]);
 
 
