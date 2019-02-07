@@ -91,15 +91,8 @@
                     @{{item.message}}
                   </p>
                 </div>
-                <nav class="level is-mobile">
-                  <div class="level-left">
-                    <a class="level-item">
-                      <span class="icon is-small"><i class="fas fa-heart"></i></span>
-                    </a>
-                  </div>
-                </nav>
               </div>
-              <div class="media-right">
+              <div class="media-right" v-if="item.username == '{{Auth::user()->username}}'">
                 <form class="" action="{{ route('tweet.delete') }}" method="delete">
                   <input type="hidden" name="tweet_id" :value="item.tweet_id">
                   <button type="submit" class="delete"></button>
