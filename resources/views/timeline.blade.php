@@ -9,9 +9,11 @@
         <section class="section home_profile">
           <div class="columns">
             <div class="column is-4">
-              <div class="image">
-                <img src="{{ Auth::user()->img }}">
-              </div>
+              <a href="/profile">
+                <div class="image">
+                  <img src="{{ Auth::user()->img }}">
+                </div>
+              </a>
             </div>
             <div class="column">
               <p class="is-size-5">{{ Auth::user()->fullname }}</p>

@@ -31,3 +31,16 @@ body {
 .home_profile p {
     margin-bottom: 0 !important;
 }
+
+#profile {
+    background: white;
+    border-radius: 10px;
+}
+
+#profile .image {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 100px;
+    margin: 0 auto;
+}

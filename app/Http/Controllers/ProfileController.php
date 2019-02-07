@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class ProfileController extends Controller
 {
@@ -24,5 +25,18 @@ class ProfileController extends Controller
   public function index()
   {
       return view('profile');
+  }
+
+  public function post(User $user, Request $request)
+  {
+
+    $user
+    ->where('username', '=', $request->username_update)
+    ->update([
+      'fullname' => $request->fullname_update,
+      'email' => $request->email_update
+    ]);
+
+    return redirect('/');
   }
 }
