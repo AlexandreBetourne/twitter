@@ -3,13 +3,22 @@
 @section('content')
 <div class="container" id="profile">
   <section class="section white_block">
-    <div class="image">
-      <img src="{{ Auth::user()->img }}">
-    </div>
-    <h1 class="title">Profile</h1>
-
-    <form class="" action="{{ route('profile.post') }}" method="post">
+    <form class="" action="{{ route('profile.post') }}" method="post" enctype="multipart/form-data">
       {{ csrf_field() }}
+
+      <input id="img_update" type="file" class="is-hidden" name="img_update_file" accept="image/*" />
+      <label for="img_update" class="image">
+          <img src="{{ Auth::user()->img }}">
+          <div class="img_modifier">
+            <span>Modifier</span>
+          </div>
+
+      </label>
+
+      <h1 class="title">Profile</h1>
+
+
+
       <input type="hidden" name="username_update" value="{{ Auth::user()->username }}">
       <div class="field">
         <label class="label">Full Name</label>
