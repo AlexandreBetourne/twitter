@@ -32,4 +32,12 @@ class User extends Authenticatable
     public function tweets(){
       return $this->hasMany(Tweet::Class);
     }
+
+    public function follows(){
+      return $this->belongsToMany(User::Class, 'followers', 'userid1', 'userid2');
+    }
+
+    public function followers(){
+      return $this->belongsToMany(User::Class, 'followers', 'userid2', 'userid1');
+    }
 }

@@ -46,7 +46,7 @@
           <form class="" action="{{ route('tweet.post') }}" method="post">
             {{ csrf_field() }}
 
-            <input type="hidden" ref="username" name="username" value="{{ Auth::user()->username }}">
+            <input type="hidden" ref="user_id" name="user_id" value="{{ Auth::user()->id }}">
             <input type="hidden" ref="fullname" name="fullname" value="{{ Auth::user()->fullname }}">
             <article class="media">
               <figure class="media-left">
@@ -80,19 +80,19 @@
             <article v-else class="media" v-for="item in tweets.slice().reverse()">
               <figure class="media-left">
                 <p class="image is-64x64">
-                  <img :src="item.img">
+                  <img :src="item.user.img">
                 </p>
               </figure>
               <div class="media-content">
                 <div class="content">
                   <p>
-                    <strong>@{{item.fullname}}</strong> <small>@@{{item.username}}</small> <small>@{{item.created_at}}</small>
+                    <strong>@{{item.user.fullname}}</strong> <small>@@{{item.user.username}}</small> <small>@{{item.created_at}}</small>
                     <br>
                     @{{item.message}}
                   </p>
                 </div>
               </div>
-              <div class="media-right" v-if="item.username == '{{Auth::user()->username}}'">
+              <div class="media-right" v-if="item.user.username == '{{Auth::user()->username}}'">
                 <form class="" action="{{ route('tweet.delete') }}" method="delete">
                   <input type="hidden" name="tweet_id" :value="item.tweet_id">
                   <button type="submit" class="delete"></button>

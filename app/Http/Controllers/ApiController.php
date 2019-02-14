@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tweet;
+use Auth;
 
 class ApiController extends Controller
 {
@@ -17,21 +18,22 @@ class ApiController extends Controller
       $this->middleware('auth');
   }
 
-  public function index(Tweet $tweet)
+  public function index(Tweet $tweet, Request $request)
   {
+    $tweets = $tweet->whereIn(
+      'user_id', $request->user()->follows()->pluck('users.id')->push($request->user()->id)
+    )->with('user');
 
-    $tweets = $tweet
-              ->join('users', 'tweets.username', '=', 'users.username')
-              ->get();
+    $d = $tweets->get();
 
-    return $tweets;
+    return $d;
   }
 
   public function post(Tweet $tweet, Request $request)
   {
 
     $tweet->forceCreate([
-      'username' => $request->username,
+      'user_id' => $request->user_id,
       'message' => $request->tweet_message
     ]);
 

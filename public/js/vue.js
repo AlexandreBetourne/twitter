@@ -7,6 +7,7 @@ const app = new Vue({
 		}
 	},
 	mounted: function() {
+		console.log("hello");
 		axios
 			.get('/api/all')
 			.then(response => (this.tweets = response.data))
