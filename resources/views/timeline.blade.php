@@ -16,22 +16,18 @@
           <div class="columns">
             <div class="column">
               <p class="is-size-5">{{ Auth::user()->fullname }}</p>
-              <p class="is-size-7">@ {{ Auth::user()->username }}</p>
+              <p class="is-size-7">@.{{ Auth::user()->username }}</p>
             </div>
           </div>
 
           <div class="columns">
             <div class="column">
-              <p class="is-size-7">Tweets</p>
-              <p><strong>100</strong></p>
-            </div>
-            <div class="column">
               <p class="is-size-7">Abonnements</p>
-              <p><strong>100</strong></p>
+              <p><strong>@{{follows.length}}</strong></p>
             </div>
             <div class="column">
               <p class="is-size-7">Abonnés</p>
-              <p><strong>100</strong></p>
+              <p><strong>@{{followers.length}}</strong></p>
             </div>
           </div>
 

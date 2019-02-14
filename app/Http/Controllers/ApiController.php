@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tweet;
+use App\User;
 use Auth;
 
 class ApiController extends Controller
@@ -44,5 +45,26 @@ class ApiController extends Controller
   {
     $tweet->where('tweet_id', '=', $request->tweet_id)->delete();
     return redirect("/");
+  }
+
+  public function followers(Request $request)
+  {
+
+    $followers = $request->user()->followers();
+
+    $d = $followers->get();
+
+    return $d;
+
+  }
+
+  public function follows(Request $request)
+  {
+
+    $follows = $request->user()->follows();
+
+    $d = $follows->get();
+
+    return $d;
   }
 }
