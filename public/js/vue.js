@@ -36,6 +36,9 @@ const app = new Vue({
 			})
 
 			this.$refs.message.value = "";
+		},
+		goToProfile(username) {
+			window.location.href = '/profile/' + username;
 		}
 	}
 });

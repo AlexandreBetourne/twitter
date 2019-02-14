@@ -7,7 +7,7 @@
     <div class="column is-one-quarter ">
       <div class="content white-block">
         <section class="section home_profile">
-          <a href="/profile">
+          <a href="/profile/{{ Auth::user()->username }}">
             <div class="image">
               <img src="{{Auth::user()->img}}">
             </div>
@@ -74,10 +74,10 @@
             </div>
 
             <article v-else class="media" v-for="item in tweets.slice().reverse()">
-              <figure class="media-left">
-                <p class="image is-64x64">
-                  <img :src="item.user.img">
-                </p>
+              <figure class="media-left" @click="goToProfile(item.user.fullname)">
+                  <p class="image is-64x64">
+                    <img :src="item.user.img">
+                  </p>
               </figure>
               <div class="media-content">
                 <div class="content">

@@ -22,8 +22,9 @@ class ProfileController extends Controller
    *
    * @return \Illuminate\Contracts\Support\Renderable
    */
-  public function index()
+  public function index(User $user, $username)
   {
+      $d = $user->where('username', $username)->first();
       return view('profile');
   }
 
@@ -37,9 +38,6 @@ class ProfileController extends Controller
         'img' => 'storage/'.$path
       ]);
     }
-
-
-
 
     $user
     ->where('username', '=', $request->username_update)

@@ -51,7 +51,6 @@ class ApiController extends Controller
   {
 
     $followers = $request->user()->followers();
-
     $d = $followers->get();
 
     return $d;
@@ -62,9 +61,14 @@ class ApiController extends Controller
   {
 
     $follows = $request->user()->follows();
-
     $d = $follows->get();
 
     return $d;
+  }
+
+  public function profile(User $user, $username)
+  {
+
+    return $user->where('username', $username)->first();
   }
 }
