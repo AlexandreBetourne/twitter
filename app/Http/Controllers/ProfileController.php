@@ -24,7 +24,6 @@ class ProfileController extends Controller
    */
   public function index(User $user, $username)
   {
-      $d = $user->where('username', $username)->first();
       return view('profile');
   }
 
@@ -35,7 +34,7 @@ class ProfileController extends Controller
       $user
       ->where('username', '=', $request->username_update)
       ->update([
-        'img' => 'storage/'.$path
+        'img' => '/storage/'.$path
       ]);
     }
 

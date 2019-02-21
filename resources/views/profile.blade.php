@@ -2,26 +2,25 @@
 
 @section('content')
 <div class="container" id="profile">
-  <section class="section white_block">
+  <section class="section white_block" v-if="user.username == '{{Auth::user()->username}}'">
     <form class="" action="{{ route('profile.post') }}" method="post" enctype="multipart/form-data">
       {{ csrf_field() }}
 
       <input id="img_update" type="file" class="is-hidden" name="img_update_file" accept="image/*" />
       <label for="img_update" class="image">
-          <img src="{{ Auth::user()->img }}">
+          <img :src="user.img">
           <div class="img_modifier">
             <span>Modifier</span>
           </div>
-
       </label>
 
       <h1 class="title">Profile</h1>
 
 
-
       <input type="hidden" name="username_update" value="{{ Auth::user()->username }}">
       <div class="field">
         <label class="label">Full Name</label>
+
         <div class="control">
           <input name="fullname_update" class="input form-control{{ $errors->has('fullname') ? ' is-invalid' : '' }}" type="text" value="{{ Auth::user()->fullname }}">
 
@@ -59,5 +58,15 @@
     </form>
   </section>
 
+  <section class="section white_block" v-else>
+    <label for="img_update" class="image">
+        <img :src="user.img">
+    </label>
+
+    <div class="has-text-centered">
+      <h1>@{{user.fullname}}</h1>
+      <h2>@@{{user.username}}</h2>
+    </div>
+  </section>
 </div>
 @endsection

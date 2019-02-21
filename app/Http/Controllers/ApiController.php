@@ -43,13 +43,13 @@ class ApiController extends Controller
 
   public function delete(Tweet $tweet, Request $request)
   {
-    $tweet->where('tweet_id', '=', $request->tweet_id)->delete();
+    $tweet->where('id', '=', $request->tweet_id)->delete();
     return redirect("/");
   }
 
   public function followers(Request $request)
   {
-
+    
     $followers = $request->user()->followers();
     $d = $followers->get();
 
@@ -68,7 +68,6 @@ class ApiController extends Controller
 
   public function profile(User $user, $username)
   {
-
     return $user->where('username', $username)->first();
   }
 }

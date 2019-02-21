@@ -6,6 +6,7 @@ const app = new Vue({
 			loading: true,
 			followers: null,
 			follows: null,
+			user: null
 		}
 	},
 	mounted: function() {
@@ -24,6 +25,9 @@ const app = new Vue({
 			.get('/api/followers')
 			.then(response => (this.followers = response.data))
 
+		axios
+			.get('/api/profile/' + window.location.href.substr(window.location.href.lastIndexOf('/') + 1))
+			.then(response => (console.log(this.user = response.data)))
 
 	},
 	methods: {

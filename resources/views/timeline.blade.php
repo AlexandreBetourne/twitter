@@ -90,7 +90,7 @@
               </div>
               <div class="media-right" v-if="item.user.username == '{{Auth::user()->username}}'">
                 <form class="" action="{{ route('tweet.delete') }}" method="delete">
-                  <input type="hidden" name="tweet_id" :value="item.tweet_id">
+                  <input type="hidden" name="tweet_id" :value="item.id">
                   <button type="submit" class="delete"></button>
                 </form>
               </div>
